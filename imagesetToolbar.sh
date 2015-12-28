@@ -6,18 +6,21 @@ ScalePic () {
     height=`echo $imageHeight`
     width=`echo $imageWidth`
 
-    height2x=$(($height*2/3))
-    width2x=$(($width*2/3))
+    height3x=66
+    width3x=66
 
-    height1x=$(($height/3))
-    width1x=$(($width/3))
+    height2x=44
+    width2x=44
+
+    height1x=22
+    width1x=22
 
 
     imageFile=$1
     fileName2x=${imageFile/\.png/@2x\.png}
     fileName3x=${imageFile/\.png/@3x\.png}
 
-    cp $imageFile $fileName3x
+    sips -z $height3x $width3x $1 --out $fileName3x
     sips -z $height2x $width2x $1 --out $fileName2x
     sips -z $height1x $width1x $1
 }
